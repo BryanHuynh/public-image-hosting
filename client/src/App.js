@@ -1,32 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
-import {fetchPosts} from './api/index';
-
-import React from 'react';
+import React, { useState } from "react";
+import { getPosts, createPosts} from './actions/posts';
+import { Container, Typography, Grow, Grid} from '@material-ui/core';
+import Form from './components/Form/Form'
 function App() {
-  const msg = fetchPosts();
-  return (
-    
-    <div className="App">
-      <h1> {msg.data} </h1>
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-  
-}
 
+	getPosts().then((data) => {console.log(data)});
+
+	const [images, setImages] = useState();
+
+	const updateUploadedFiles = (uploadedFiles) =>{
+		setImages(uploadedFiles);
+	}
+
+
+	const onSubmit = (e) =>{
+		e.preventDefault();
+		console.log(images);
+		createPosts(images);
+	}
+
+
+	return (
+		<div>
+		<Container maxWidth={false} >
+			<Grow in> 
+				<Grid container justify='space-between' align-items="stretch" spacing={0}>
+				<Grid item xs={12} sm={7}>
+
+				</Grid>
+				<Grid item xs={12} sm={3}>
+					<Form updateUploadedFiles={updateUploadedFiles} onSubmit={onSubmit}/>
+				</Grid>
+				</Grid>
+			</Grow>
+
+		</Container>
+
+		</div>
+	);
+}
 
 export default App;
