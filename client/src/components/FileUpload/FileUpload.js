@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
-import FileBase from 'react-file-base64';
-import * as fs from 'fs';
+import UploadInput from "./UploadInput/UploadInput"
 
 import {
   FileUploadContainer,
@@ -30,63 +29,60 @@ const FileUpload = ({
   maxFileSizeInBytes = DEFAULT_MAX_FILE_SIZE_IN_BYTES,
   ...otherProps
 }) => {
-  const fileInputField = useRef(null);
-  const [files, setFiles] = useState({});
 
-  const handleUploadBtnClick = () => {
-    fileInputField.current.click();
-  };
+	const fileInputField = useRef(null);
+	const [files, setFiles] = useState({});
 
-  const addNewFiles = (newFiles) => {
-    for (let file of newFiles) {
-      if (file.size < maxFileSizeInBytes) {
-        if (!otherProps.multiple) {
-          return { file };
-        }
-        files[file.name] = file;
-      }
-    }
-    return { ...files };
-  };
+	const handleUploadBtnClick = () => {
+		fileInputField.current.click();
+	};
 
-  const callUpdateFilesCb = (files) => {
-    const filesAsArray = convertNestedObjectToArray(files);
-    updateFilesCb(filesAsArray);
+	const addNewFiles = (newFiles) => {
+		for (let file of newFiles) {
+		if (file.size < maxFileSizeInBytes) {
+			if (!otherProps.multiple) {
+			return { file };
+			}
+			files[file.name] = file;
+		}
+		}
+		return { ...files };
+	};
 
-  };
+	const callUpdateFilesCb = (files) => {
+		const filesAsArray = convertNestedObjectToArray(files);
+		updateFilesCb(filesAsArray);
 
-  const handleNewFileUpload = (e) => {
-    const { files: newFiles } = e.target;
-    if (newFiles.length) {
-      let updatedFiles = addNewFiles(newFiles);
-      setFiles(updatedFiles);
-      callUpdateFilesCb(updatedFiles);
-    }
-  };
+	};
 
-  const removeFile = (fileName) => {
-    delete files[fileName];
-    setFiles({ ...files });
-    callUpdateFilesCb({ ...files });
-  };
+	const handleNewFileUpload = (e) => {
+		const { files: newFiles } = e.target;
+		if (newFiles.length) {
+		let updatedFiles = addNewFiles(newFiles);
+		setFiles(updatedFiles);
+		callUpdateFilesCb(updatedFiles);
+		}
+	};
+
+	const removeFile = (fileName) => {
+		delete files[fileName];
+		setFiles({ ...files });
+		callUpdateFilesCb({ ...files });
+	};
 
   return (
     <>
       <FileUploadContainer>
         <InputLabel>{label}</InputLabel>
         <DragDropText>Drag and drop your files anywhere or</DragDropText>
-         <UploadFileBtn type="button" onClick={handleUploadBtnClick}>
-          <i className="fas fa-file-upload" />
-          <span> Upload {otherProps.multiple ? "files" : "a file"}</span>
-        </UploadFileBtn>
-        <FormField
-          type="file"
-          ref={fileInputField}
-          onChange={handleNewFileUpload}
-          title=""
-          value=""
-          {...otherProps}
-        />
+        {/**
+		 <UploadFileBtn type="button" onClick={handleUploadBtnClick}>
+			<i className="fas fa-file-upload" />
+			<span> Upload {otherProps.multiple ? "files" : "a file"}</span>
+		</UploadFileBtn>
+         */}
+		<UploadInput/>
+
       </FileUploadContainer>
       <FilePreviewContainer>
         <span>To Upload</span>
