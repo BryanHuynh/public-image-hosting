@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 
 const PostSchema = mongoose.Schema({
+    title: String,
     selectedFile: String,
     createdAt: {
         type: Date,

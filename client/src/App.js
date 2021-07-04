@@ -2,22 +2,16 @@ import React, { useState } from "react";
 import { getPosts, createPosts} from './actions/posts';
 import { Container, Typography, Grow, Grid} from '@material-ui/core';
 import Form from './components/Form/Form'
+import { createPost } from "./api";
 function App() {
 
 	getPosts().then((data) => {console.log(data)});
 
-	const [images, setImages] = useState();
-
-	const updateUploadedFiles = (uploadedFiles) =>{
-		setImages(uploadedFiles);
+	const updateUploadedFiles = (postData) =>{
+		delete postData.imageURL;
+		createPosts(postData);
 	}
 
-
-	const onSubmit = (e) =>{
-		e.preventDefault();
-		console.log(images);
-		createPosts(images);
-	}
 
 
 	return (
@@ -29,7 +23,7 @@ function App() {
 
 				</Grid>
 				<Grid item xs={12} sm={3}>
-					<Form updateUploadedFiles={updateUploadedFiles} onSubmit={onSubmit}/>
+					<Form parentPostData={updateUploadedFiles}/>
 				</Grid>
 				</Grid>
 			</Grow>

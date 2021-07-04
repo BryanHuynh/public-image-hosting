@@ -11,10 +11,8 @@ export const getPosts = async () => {
 
 export const createPosts = async (posts) => {
     try{
-        for(let post in posts){
-            console.log(posts[post]);
-            await api.createPost(posts[post]);
-        }
+        console.log(posts);
+        await api.createPost(posts);
     }catch(error){
         console.log(error.message);
     }
