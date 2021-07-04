@@ -14,7 +14,7 @@ const Form = ({parentPostData,...otherProps}) => {
     }
 
     const updateBlankName = (newName) => {
-        return postData.title === '' ? (newName) : (postData.title)
+        return postData.title !== newName ? (newName) : (postData.title)
     }
 
     useEffect(() => {
@@ -23,7 +23,7 @@ const Form = ({parentPostData,...otherProps}) => {
 
 
     const handleClear = () => {
-        setPostData({title:'', selectedFile:''})
+        setPostData({title:'', selectedFile:'', imageURL:null});
     }
 
     const handleSubmit = (e) => {
