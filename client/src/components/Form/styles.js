@@ -15,10 +15,24 @@ export default makeStyles((theme) => ({
     justifyContent: 'center',
   },
   fileInput: {
+    contentAlign: 'center',
+    position:'relative',
+    margin: "10px 0",
     width: '97%',
-    margin: '10px 0',
+    backgroundColor: 'gray',
+    height: '100px',
+    outline: '2px dashed white',
+    outlineOffset: '-10px',
+    '& input': {
+      position: 'absolute',
+      opacity: 0,
+      height: '100%',
+      width: '100%',
+      zIndex: 1,
+    },
   },
-  buttonSubmit: {
+
+   buttonSubmit: {
     marginBottom: 10,
   },
   
