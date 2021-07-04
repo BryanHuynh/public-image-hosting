@@ -11,6 +11,8 @@ To run this project you'll need your own <mark>MongoDB collection</mark>.
 
 to connect the project to your collection create a <mark>.env</mark> file in the <mark>server folder</mark> with your <mark>api key</mark>.
 
+example `api_key = |your api key here|`
+
 # Install
 
 run `npm install` in both the client and server folder
