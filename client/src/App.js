@@ -19,7 +19,7 @@ const App = () => {
 		<Container maxWidth={false} >
 			<Grow in> 
 				<Grid container justify='space-between' align-items="stretch" spacing={0}>
-				<Grid item xs={12} sm={7}>
+				<Grid item xs={12} sm={9}>
 					<Posts postsFunction={getPostFromDB}/>
 				</Grid>
 				<Grid item xs={12} sm={3}>

@@ -1,9 +1,14 @@
 import React from 'react'
+import {Card, CardActions, CardContent, CardMedia, Button, Typography} from '@material-ui/core';
 
-const Post = ({post, key}) => {
-    console.log(post);
+const Post = ({post}) => {
     return(
-        <h1>{post.title}</h1>
+        <>  
+            <Card>
+                <CardMedia component='img' image={post.selectedFile} title={post.title}/>
+            </Card>
+
+        </>
     ) 
 }
 
