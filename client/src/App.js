@@ -20,18 +20,18 @@ const App = () => {
 
 
 	return (
-		<Container maxWidth='lg'>
+		<Container maxWidth='false'>
 			<AppBar className={classes.appBar} position='static' color="inherit">
                 <Typography className={classes.heading} variant='h2' align='center'>Public image Hosting</Typography>
             </AppBar>
 			<Grow in> 
 				<Grid container justify='space-between' align-items="stretch" spacing={0}>
-				<Grid item xs={12} sm={8}>
-					<Posts postsFunction={getPostFromDB}/>
-				</Grid>
-				<Grid item xs={12} sm={3}>
-					<Form parentPostData={updateUploadedFiles}/>
-				</Grid>
+					<Grid item xs={12} sm={8}>
+						<Posts postsFunction={getPostFromDB}/>
+					</Grid>
+					<Grid item xs={12} sm={3}>
+						<Form parentPostData={updateUploadedFiles}/>
+					</Grid>
 				</Grid>
 			</Grow>
 
