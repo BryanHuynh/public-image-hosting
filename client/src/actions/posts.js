@@ -11,8 +11,16 @@ export const getPosts = async () => {
 
 export const createPosts = async (posts) => {
     try{
-        console.log(posts);
         await api.createPost(posts);
+    }catch(error){
+        console.log(error.message);
+    }
+}
+
+export const deletePost = async (id) => {
+    try{
+        console.log(id);
+        await api.deletePost(id);
     }catch(error){
         console.log(error.message);
     }

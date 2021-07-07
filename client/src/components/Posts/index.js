@@ -25,9 +25,9 @@ const Posts = ({postsFunction}) => {
 
             !appState.posts.length ? <CircularProgress /> : (
                 <Grid className={classes.container} container alignItems='stretch' spacing={3}>
-                    {appState.posts.map((post) => (
-                        <Grid key={post.id} item xs={12} sm={3}>
-                            <Post post={post} />
+                    {appState.posts.map((post,index) => (
+                        <Grid key={index} item xs={12} sm={6}>
+                            <Post key={index} post={post}/>
                         </Grid>
                     ))}
                 </Grid>
