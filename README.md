@@ -1,4 +1,3 @@
-# <u>INPROGESS</u>
 # Public Image Hosting
 
 This is my first full-stack react project using the React framework.
@@ -24,3 +23,9 @@ using 2 terminals use `npm start` on the server and on the client.
 <mark>Server</mark> will be hosted on http://localhost:5000
 
 <mark>Client</mark> will be hosted on http://localhost:3000
+
+# Website
+
+The site is deployed on netlify at: https://public-image-hosting.netlify.app/vv
+
+
