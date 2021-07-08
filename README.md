@@ -26,6 +26,6 @@ using 2 terminals use `npm start` on the server and on the client.
 
 # Website
 
-The site is deployed on netlify at: https://public-image-hosting.netlify.app/vv
+The site is deployed on netlify at: https://public-image-hosting.netlify.app
 
 
